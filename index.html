@@ -8,6 +8,8 @@
         <!-- Mon CSS -->    
         <link rel="stylesheet" href="SuperCamera2000Css.css">
 
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
         <!-- // JAVASCRIPT --> 
         <script>  
         // http://www.html5rocks.com/en/tutorials/getusermedia/intro/?redirect_from_locale=fr       
@@ -40,9 +42,11 @@
         <h1 hidden>Image</h1>
         <img id="myImage" src="" hidden>
         <br/>
+
+    
         
         <p>
-        <button ><a id="download" >SAVE</a></button>
+        <button class="btn"><i class="fa fa-download"></i><a id="download" >&ensp; SAVE</a></button>
         <button class="a" onclick="snapshot()">SHOOT</button>
         <button onclick="reset()">RESET</button>
         </p>
@@ -90,7 +94,8 @@
                 var pixels = currentImage.data;
                 var value = 0;
                 ctx.putImageData(currentImage, 0, 0);
-                ctx.strokeStyle='#FF000070';
+                ctx.strokeStyle=' #000a9170';
+                ctx.lineWidth=3;
 
  
             // Dessin de ma mire photos (CANVAS)
@@ -98,15 +103,38 @@
 
             ctx.moveTo(largeurCapture/2, 0.3*hauteurCapture);
             ctx.lineTo(largeurCapture/2, 0.4*hauteurCapture);
+            ctx.closePath(); // Fermeture du chemin
 
             ctx.moveTo(largeurCapture/2, 0.7*hauteurCapture);
             ctx.lineTo(largeurCapture/2, 0.6*hauteurCapture);
+            ctx.closePath(); // Fermeture du chemin
 
             ctx.moveTo(0.35*largeurCapture, hauteurCapture/2);
             ctx.lineTo(0.45*largeurCapture, hauteurCapture/2);
+            ctx.closePath(); // Fermeture du chemin
 
             ctx.moveTo(0.55*largeurCapture, hauteurCapture/2);
             ctx.lineTo(0.65*largeurCapture, hauteurCapture/2);
+            ctx.closePath(); // Fermeture du chemin
+
+            ctx.moveTo(15, 15);
+            ctx.lineTo(largeurCapture-15,15);
+            ctx.closePath(); // Fermeture du chemin
+
+            ctx.moveTo(15, hauteurCapture-15);
+            ctx.lineTo(largeurCapture-15,hauteurCapture-15);
+            ctx.closePath(); // Fermeture du chemin
+            
+            ctx.moveTo(15, 15);
+            ctx.lineTo(15,hauteurCapture-15);
+            ctx.closePath(); // Fermeture du chemin
+
+            ctx.moveTo(largeurCapture-15, 15);
+            ctx.lineTo(largeurCapture-15,hauteurCapture-15);
+            ctx.closePath(); // Fermeture du chemin
+
+            ctx.moveTo(0.55*largeurCapture, hauteurCapture/2);
+
 
             ctx.arc(largeurCapture/2, hauteurCapture/2, largeurCapture*0.1, 0, 2*Math.PI);
 
