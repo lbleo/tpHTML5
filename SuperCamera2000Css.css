@@ -7,6 +7,11 @@ body {position :relative ;}
 		
 		h1 {border: 1px solid black; padding: 5px;color: #000a91; text-align : center; font-size: 4em; font-family: sans-serif}
 		
+		h2 {padding: 5px;color: #000a91; text-align : center; font-size: 1em; font-family: sans-serif}
+
+		.text1 {border: 1px solid black; padding: 5px;color: #0f0f0f; text-align : center; font-size: 0.8em; font-family: sans-serif}
+
+
 		p {margin-left: auto; margin-right: auto; width: 40em}
 		
 		button {
@@ -34,7 +39,7 @@ body {position :relative ;}
 
 		#infos {
 			color: #141414;
-			font-size: 1.5em;
+			font-size: 1.4em;
 			text-align: center;
 			font-family: monospace;
 		}

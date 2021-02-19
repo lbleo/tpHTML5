@@ -31,6 +31,8 @@
 
     <body>
         <h1>SUPER CAMERA 2021</h1>
+        <h2> Cette application a été effectué dans un cadre d’apprentissage et dans l’optique
+            d’être utilisé sur un écran plus haut qu’il n’est large. (LE BRIS Léo - 19/02/2021 - ISEN BREST) </h2>
 
         <!-- // Ma camera en direct -->
         <video id="myVideo" hidden autoplay></video>
@@ -55,7 +57,18 @@
         <p id="infos"></p>
         <br/>
 
-        <br />
+        <div class="text1">
+        Vous pouvez tester l’application directement sur smartphone en ouvrant ce lien sur votre navigateur préféré :
+        <br/>
+        <br/>
+        https://camera-llb.netlify.app/
+        <br/>
+        <br/>
+        J'ai noté seulement en fin de séance que la camera du smartphone ne voulait pas se formater aux dimensions voulues
+        (je pense que comme il s’agit d’une caméra ‘portrait’, il faut revoir la responsivité PC/Smartphone).
+        </div>
+
+        <br/>
         
 
         <script>    
@@ -178,17 +191,37 @@
                         }
                     }
                     function showPositionAndDate(position) {
+                        var ip = myIP();
                         var today = new Date();
                         var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
                         var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
                         page.innerHTML = "Latitude: " + position.coords.latitude + "<br/>Longitude: " + position.coords.longitude +
-                            "<br/>Date/Time: " + date + "/" + time;                                
+                            "<br/>Date/Time: " + date + " / " + time + "<br/>Ip: " + ip;  
+                            
                     }
+
+                    function myIP() {
+                        if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+                        else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+                        xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
+                        xmlhttp.send();
+
+                        hostipInfo = xmlhttp.responseText.split("\n");
+
+                        for (i=0; hostipInfo.length >= i; i++) {
+                            ipAddress = hostipInfo[i].split(":");
+                            if ( ipAddress[0] == "IP" ) return ipAddress[1];
+                        }
+
+                        return false;
+                    }
+
 
                  if (navigator.getUserMedia) {
                         navigator.getUserMedia(
                             // Constraints
-                            { audio: true, video: true },
+                            { audio: false, video: true },
                             // Success Callback
                             function success(localMediaStream) {
                                 try {
